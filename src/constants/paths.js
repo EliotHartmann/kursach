@@ -1,0 +1,9 @@
+export const MAIN_PAGE = 'main';
+export const LOGIN_PAGE = 'login';
+export const REGISTER_PAGE = 'register';
+export const PATH = '/';
+export const POLICEMAN_PAGE = 'officer';
+export const DISPATCHER_PAGE = 'dispatcher';
+export const USER_PAGE = 'user';
+export const ADMIN_PAGE = 'admin';
+export const RESTRICTED_PAGE = 'restricted';

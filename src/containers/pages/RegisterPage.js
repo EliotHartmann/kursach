@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import UnauthorisedUserHeader from "./UnauthorisedUserHeader";
+import UnauthorisedUserHeader from "../headers/UnauthorisedUserHeader";
 import {Alert, Col, Row} from "react-bootstrap";
-import AuthForm from "../components/AuthComponents/AuthForm";
+import AuthForm from "../../components/AuthComponents/AuthForm";
 
 export default class RegisterPage extends Component{
     render() {

@@ -56,7 +56,7 @@ class AuthForm extends Component{
                     <Col/>
                     <Col>
                 <Button variant="primary" type="submit" onClick={this.register(this.state.login, this.state.password)}>
-                    Submit
+                    Sign Up
                 </Button>
                     </Col>
                     <Col/>

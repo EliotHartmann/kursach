@@ -2,10 +2,8 @@ import {
     LOGIN_SACCEED,
     LOGOUT,
     REGISTRATION_COMPLETED, REGISTRATION_FAILED,
-    SESSION_CLOSED,
     WARNING
 } from "../../constants/actionTypes";
-
 import history from '../history';
 import {MAIN_PAGE, RESTRICTED_PAGE} from "../../constants/paths";
 

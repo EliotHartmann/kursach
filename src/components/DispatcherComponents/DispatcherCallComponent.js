@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import {Button, Form} from "react-bootstrap";
+import {Button, Col, Form} from "react-bootstrap";
 import {connect} from "react-redux";
 import {newCall} from "../../store/actions/dispatcherActions";
 import {bindActionCreators} from "redux";
 import WarningComponent from "../WarningComponent";
+import DispatcherHeader from "../../containers/headers/DispatcherHeader";
 
 class DispatcherCallComponent extends Component{
     constructor(props){
@@ -32,13 +33,22 @@ class DispatcherCallComponent extends Component{
     render() {
         return (
             <div>
+                <DispatcherHeader/>
                 <Form>
-                    <Form.Group>
-                        <Form.Label>Address</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Street" onChange={this.handleChange('street')}/>
-                        <Form.Control type="text" placeholder="Enter House №" onChange={this.handleChange('house')}/>
-                        <Form.Control type="text" placeholder="Enter District name" onChange={this.handleChange('district')}/>
-                    </Form.Group>
+                    <Form.Row>
+                        <Form.Group as={Col}>
+                            <Form.Label>Street</Form.Label>
+                            <Form.Control type="text" placeholder="Enter Street" onChange={this.handleChange('street')}/>
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Label>House №</Form.Label>
+                            <Form.Control type="text" placeholder="Enter House №" onChange={this.handleChange('house')}/>
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Label>District Name</Form.Label>
+                            <Form.Control type="text" placeholder="Enter District name" onChange={this.handleChange('district')}/>
+                        </Form.Group>
+                    </Form.Row>
                     <Form.Group>
                         <Form.Label>Description</Form.Label>
                         <Form.Control type="text" placeholder="Enter Status" onChange={this.handleChange('description')}/>
@@ -61,7 +71,7 @@ class DispatcherCallComponent extends Component{
                         </Form.Control>
                     </Form.Group>
                     <Button variant="primary" type="submit" onClick={this.newCall(this.state.street, this.state.house, this.state.district, this.state.description, this.state.type)}>
-                        Submit
+                        Create call
                     </Button>
                 </Form>
                 <WarningComponent/>

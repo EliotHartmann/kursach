@@ -3,6 +3,7 @@ import {Table} from "react-bootstrap";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {loadInfo} from "../../store/actions/userActions";
+import UserHeader from "../../containers/headers/UserHeader";
 
 class UserInfoComponent extends Component{
     // constructor(props){
@@ -15,10 +16,18 @@ class UserInfoComponent extends Component{
         return(
             <div>
                 <Table>
-                    <tr>Username</tr>
-                    <tr>{this.props.info.username}</tr>
-                    <tr>Email</tr>
-                    <tr>{this.props.info.email}</tr>
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{this.props.userInfo.username}</td>
+                        <td>{this.props.userInfo.email}</td>
+                    </tr>
+                    </tbody>
                 </Table>
             </div>
         )
@@ -28,7 +37,8 @@ class UserInfoComponent extends Component{
 
         return(
             <div>
-                {this.loadInfo}
+                <UserHeader/>
+                {this.loadInfo()}
             </div>
         )
     }
@@ -37,7 +47,7 @@ class UserInfoComponent extends Component{
 
 const mapStateToProps = (state) =>{
     return{
-        info: state.info
+        userInfo: state.userInfo
     }
 };
 

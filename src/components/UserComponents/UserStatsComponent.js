@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {loadStats} from "../../store/actions/userActions";
 import {Form, Table} from "react-bootstrap";
+import UserHeader from "../../containers/headers/UserHeader";
 
 class UserStatsComponent extends Component{
 
@@ -12,7 +13,7 @@ class UserStatsComponent extends Component{
             district: 'The Bronx'
         };
         this.handleChange = this.handleChange.bind(this);
-        this.renderDistrictStats = this.renderDistrictStats().bind(this);
+        // this.renderDistrictStats = this.renderDistrictStats().bind(this);
     }
     handleChange = name => event => {
         event.preventDefault();
@@ -25,20 +26,23 @@ class UserStatsComponent extends Component{
         let result = [];
         for(let i = 0; i<this.props.stats.length; i++){
             let stat = this.props.stats[i];
-            result.push(
-                <tr>
-                    <td>{stat.name}</td>
-                    <td>{stat.area}</td>
-                    <td>{stat.crimeNumber}</td>
-                    <td>{stat.population}</td>
-                </tr>
-            )
+            if(stat.name === this.state.district){
+                result.push(
+                    <tr>
+                        <td>{stat.name}</td>
+                        <td>{stat.area}</td>
+                        <td>{stat.crimeNumber}</td>
+                        <td>{stat.population}</td>
+                    </tr>
+                )
+            }
         }
         return(result);
     }
     render() {
         return(
             <div>
+                <UserHeader/>
                 <Form inline>
                     <Form.Group>
                         <Form.Label>District</Form.Label>
@@ -53,14 +57,17 @@ class UserStatsComponent extends Component{
                 </Form>
                 <Table>
                     <thead>
-                    <th>Name</th>
-                    <th>Area</th>
-                    <th>Crime number</th>
-                    <th>Population</th>
+                        <tr>
+                            <th>Name</th>
+                            <th>Area</th>
+                            <th>Crime number</th>
+                            <th>Population</th>
+                        </tr>
                     </thead>
+                    <tbody>
+                        {this.renderDistrictStats()}
+                    </tbody>
                 </Table>
-
-                {this.renderDistrictStats}
             </div>
 
         )

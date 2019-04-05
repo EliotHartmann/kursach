@@ -3,16 +3,16 @@ import {
     CALLS_LOADED,
     INFO_LOADED,
     SEARCH_COMPLETED,
-    SESSION_CLOSED,
     WARNING
 } from "../../constants/actionTypes";
 import history from "../history";
-import {MAIN_PAGE, RESTRICTED_PAGE} from "../../constants/paths";
+import {apiUrl} from "../../index";
+import {RESTRICTED_PAGE} from "../../constants/paths";
 
 export function loadInfo(){
     return (dispatch) =>{
         console.log("loadInfo method called");
-        fetch('www.nypolicecw.com:7313/dispatcher/officer/info', {
+        fetch(`${apiUrl}/officer/info`, {
             method: 'GET',
             redirect: "follow"
         }).then(response=>{
@@ -41,13 +41,14 @@ export function DBSearch(name, surname, p_number){
         // data.append('passport', p_number);
         // data.append('name', name);
         // data.append('surname', surname);
-        fetch('www.nypolicecw.com:7313/search?passport='+p_number+"&name="+name+"&surname="+surname, {
+        fetch(apiUrl+'/search?passport='+p_number+"&name="+name+"&surname="+surname,  {
             method: 'GET',
             redirect: "follow",
             credentials: 'include'
             // body: data
         }).then(response=>{
             if(response.ok){
+                console.log(response.text());
                 dispatch({
                     type: SEARCH_COMPLETED,
                     payload: response.text()
@@ -74,7 +75,7 @@ export function callSubmit(description, time, status){
             status: status ? "ACTIVE" : "FINISHED"
         };
         console.log(data);
-        fetch('www.nypolicecw.com:7313/active_call', {
+        fetch(apiUrl+'/officer/active_call', {
             method: 'POST',
             body: JSON.stringify(data),
             redirect: "follow",

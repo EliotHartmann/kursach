@@ -1,17 +1,20 @@
 import React, {Component} from "react";
-import {Button} from "react-bootstrap";
+import {Button, Col, Row} from "react-bootstrap";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {logout} from "../../store/actions/authActions";
 import WarningComponent from "../WarningComponent";
 
 class SignOutComponent extends Component{
+
+    logout = () => event => {
+        event.preventDefault();
+        this.props.logout()
+    };
     render() {
         return(
             <div>
-                You logged as <b>{this.props.login}</b>
-                <Button variant={"outline-danger"}>Logout</Button>
-                <WarningComponent/>
+                <Button variant={"outline-danger"} size={"sm"} onClick={this.logout()}>Logout</Button>
             </div>
         )
     }

@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import UnauthorisedUserHeader from "./UnauthorisedUserHeader";
-import AuthorisedUserHeader from "./AuthorisedUserHeader";
+import UnauthorisedUserHeader from "../headers/UnauthorisedUserHeader";
 
 export default class MainPage extends Component {
     render() {

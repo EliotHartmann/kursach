@@ -1,14 +1,14 @@
 import React, {Component} from "react";
-import UnauthorisedUserHeader from "./UnauthorisedUserHeader";
+import UnauthorisedUserHeader from "../headers/UnauthorisedUserHeader";
 import Alert from "react-bootstrap/Alert";
 
-export default class RestrictedPage extends Component{
+export default class NotFoundPage extends Component{
     render() {
         return(
             <div>
                 <UnauthorisedUserHeader/>
-                <Alert variant={"danger"}>
-                    You have no access to this page
+                <Alert variant={"info"}>
+                    This page not found
                 </Alert>
             </div>
         )

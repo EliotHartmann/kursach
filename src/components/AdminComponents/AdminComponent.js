@@ -4,6 +4,7 @@ import {bindActionCreators} from "redux";
 import {Alert, Button, Form} from "react-bootstrap";
 import {createUser} from "../../store/actions/adminActions";
 import WarningComponent from "../WarningComponent";
+import AdminHeader from "../../containers/headers/AdminHeader";
 
 class AdminComponent extends Component{
     constructor(props){
@@ -61,7 +62,7 @@ class AdminComponent extends Component{
                         Submit
                     </Button>
                 </Form>
-                <Alert variant={"light"}>{this.props.message}{this.props.createdUserInfo.login}{this.props.createdUserInfo.password}</Alert>
+                <Alert variant={"light"}>{this.props.createdUserInfo.login}{this.props.createdUserInfo.password}</Alert>
                 <WarningComponent/>
             </div>
 

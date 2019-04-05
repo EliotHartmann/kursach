@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/src/paper-dashboard-react-master
 /.pnp
 .pnp.js
 

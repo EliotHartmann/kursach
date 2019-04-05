@@ -1,9 +1,11 @@
 import React, {Component} from "react";
-import {Table, Form, Button, Col, Row} from "react-bootstrap";
-import {DBSearch, loadInfo} from "../../store/actions/policemanActions";
+import {Table, Form, Col, Button} from "react-bootstrap";
+import {DBSearch} from "../../store/actions/policemanActions";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import WarningComponent from "../WarningComponent";
+import PolicemanHeader from "../../containers/headers/PolicemanHeader";
+// import Button from "../../paper-dashboard-react-master/src/components/CustomButton/CustomButton"
 
 class PolicemanWorkWithDBComponent extends Component{
 
@@ -52,31 +54,32 @@ class PolicemanWorkWithDBComponent extends Component{
     render() {
         return(
             <div>
+                <PolicemanHeader/>
                 <Form>
-                    <Row>
-                        <Col>
+                    <Form.Row>
+                        <Form.Group as={Col}>
+                             <Form.Label>Surname</Form.Label>
+                             <Form.Control type="text" placeholder="Enter Surname" onChange={this.handleChange('surname')}/>
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control type="text" placeholder="Enter name" onChange={this.handleChange('name')}/>
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Col>
+                                <Form.Label>Passport number</Form.Label>
+                                <Form.Control type="text" placeholder="Enter passport number" onChange={this.handleChange('p_number')}/>
+                            </Col>
+                        </Form.Group>
+                        </Form.Row>
                             <Form.Group>
-                                <Form.Label>Surmane</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Surname" onChange={this.handleChange('surname')}/>
+                                <Button color="primary" round={true} onClick={this.DBSearch(this.state.surname, this.state.name, this.state.p_number)}>
+                                    Search
+                                </Button>
                             </Form.Group>
-                        </Col>
-                        <Col>
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter name" onChange={this.handleChange('name')}/>
-                        </Col>
-                        <Col>
-                            <Form.Label>Passport number</Form.Label>
-                            <Form.Control type="text" placeholder="Enter passport number" onChange={this.handleChange('p_number')}/>
-                        </Col>
-                        <Col>
-                            <Button variant="primary" type="submit" onClick={this.DBSearch(this.state.surname, this.state.name, this.state.p_number)}>
-                                Submit
-                            </Button>
-                        </Col>
-                    </Row>
                 </Form>
-                <Table bordered hover>
-                    <thead>
+                <Table>
+                    <thead className={"text-primary"}>
                         <tr>
                             <th>#</th>
                             <th>Name, Surname</th>

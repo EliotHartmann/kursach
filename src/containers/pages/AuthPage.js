@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import UnauthorisedUserHeader from "./UnauthorisedUserHeader";
+import UnauthorisedUserHeader from "../headers/UnauthorisedUserHeader";
 import {Alert, Button, Col, Row} from "react-bootstrap";
 import {bindActionCreators} from "redux";
-import {login} from "../store/actions/authActions";
+import {login} from "../../store/actions/authActions";
 import {connect} from "react-redux";
-
+import Send from "@material-ui/icons/Send";
 class AuthPage extends Component{
 
     login = () => event => {
@@ -26,9 +26,14 @@ class AuthPage extends Component{
                         </Col>
                         <Col/>
                     </Row>
-                    <Button variant={"primary"} type ="submit" onClick={this.login()}>Log in</Button>
+                    <Row>
+                        <Col/>
+                        <Col>
+                            <Button color={"primary"} onClick={this.login()}> Log in <Send /></Button>
+                        </Col>
+                        <Col/>
+                    </Row>
                 </div>
-
             </div>
         );
     }

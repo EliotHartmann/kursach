@@ -3,31 +3,37 @@ import {Table} from "react-bootstrap";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {loadInfo} from "../../store/actions/userActions";
-import UserHeader from "../../containers/headers/UserHeader";
+import UserInfoHeader from "../../containers/headers/UserHeaders/UserInfoHeader";
+import {Col, Row} from "reactstrap";
+import Footer from "../../containers/Footer";
 
 class UserInfoComponent extends Component{
-    // constructor(props){
-    //     super(props);
-    //     // this.loadInfo = this.loadInfo().bind(this);
-    // }
 
     loadInfo = () => {
         this.props.loadInfo();
         return(
             <div>
                 <Table>
-                    <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Email</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>{this.props.userInfo.username}</td>
-                        <td>{this.props.userInfo.email}</td>
-                    </tr>
-                    </tbody>
+                    <Row>
+                        <Col/>
+                        <Col>
+                            <Table>
+                                <thead className={"text-danger"}>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{this.props.userInfo.username}</td>
+                                    <td>{this.props.userInfo.email}</td>
+                                </tr>
+                                </tbody>
+                            </Table>
+                        </Col>
+                        <Col/>
+                    </Row>
                 </Table>
             </div>
         )
@@ -37,8 +43,9 @@ class UserInfoComponent extends Component{
 
         return(
             <div>
-                <UserHeader/>
+                <UserInfoHeader/>
                 {this.loadInfo()}
+                <Footer/>
             </div>
         )
     }

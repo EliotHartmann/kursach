@@ -16,15 +16,15 @@ export const initialState={
         status: 'ALIVE',
         historyOfWork: [
             {
-                start: "2017-03-27T16:45:27.920+0000",
-                finish: "2018-03-27T16:45:25.746+0000",
+                start: "2017-03-27 16:45:27",
+                finish: "2018-03-27 16:45:25",
                 policeStation: {
                     name: 'police station name'
                 }
             },
             {
-                start: "2018-09-27T16:45:27.920+0000",
-                finish: "2018-09-27T16:45:25.746+0000",
+                start: "2018-09-27 16:45:27",
+                finish: "2018-09-27 16:45:25",
                 policeStation: {
                     name: 'police station name 2'
                 }
@@ -33,24 +33,26 @@ export const initialState={
     },
     calls: [
         {
-            time:"2019-03-27T17:55:23.918+0000",
+            time:"2019-03-26 17:55:23",
             description:"qq",
             status: true
         },
         {
-            time:"2018-03-27T17:55:25.450+0000",
+            time:"2018-03-27 17:12:19",
             description:"ww",
-            status:false
+            status: false
         }
     ],
     humans: [
         {
             name: 'John',
+            surname: 'Lalala',
             p_number: '1',
             location: 'street 10 district'
         },
         {
             name: 'John',
+            surname: 'asdasd',
             p_number: '123123',
             location: 'street 148 district'
         }

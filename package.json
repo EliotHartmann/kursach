@@ -3,22 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "latest",
     "bootstrap": "^4.3.1",
     "history": "^4.7.2",
+    "node": "latest",
+    "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
+    "reactstrap": "latest",
     "reduce-reducers": "^0.4.3",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "node": "latest",
-    "@material-ui/icons": "latest",
-    "@material-ui/core": "latest",
-    "reactstrap": "latest"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "test": "react-scripts test",

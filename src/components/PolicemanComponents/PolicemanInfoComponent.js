@@ -1,10 +1,12 @@
 import React, {Component} from "react";
-import {Col, Row, Table} from "reactstrap";
+import {Col, Row, Table} from "react-bootstrap";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {loadInfo} from "../../store/actions/policemanActions";
 import WarningComponent from "../WarningComponent";
-import PolicemanHeader from "../../containers/headers/PolicemanHeader";
+import DispatcherInfoHeader from "../../containers/headers/DispatcherHeaders/DispatcherInfoHeader";
+import Footer from "../../containers/Footer";
+import PolicemanInfoHeader from "../../containers/headers/PolicemanHeaders/PolicemanInfoHeader";
 
 class PolicemanInfoComponent extends Component{
     constructor(props){
@@ -32,72 +34,66 @@ class PolicemanInfoComponent extends Component{
         return(
             <div>
                 <Table>
-                <Row>
-                <Col>
-                    <Table>
-                        <thead className="text-primary">
-                        <tr>
-                            <th>Rank</th>
-                            <th>Salary</th>
-                            <th>Police Station</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{this.props.info.rank}</td>
-                            <td>{this.props.info.salary}</td>
-                            <td>{this.props.info.p_station}</td>
-                        </tr>
-                        </tbody>
-                    </Table>
-                    <Table >
-                        <thead className="text-primary">
-                        <tr>
-                            <th>Name</th>
-                            <th>Surname</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{this.props.info.name}</td>
-                            <td>{this.props.info.surname}</td>
-                            <td>{this.props.info.status}</td>
-                        </tr>
-                        </tbody>
-                    </Table>
-                    <Table >
-                        <thead className="text-primary">
-                        <tr>
-                            <th>Jabber</th>
-                            <th>E-mail</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{this.props.info.jabber}</td>
-                            <td>{this.props.info.email}</td>
-                            <td></td>
-                        </tr>
-                        </tbody>
-                    </Table>
-                </Col>
-                <Col>
-                    <Table>
-                        <thead className="text-primary">
-                            <tr>
-                                <th>Start</th>
-                                <th>Finish</th>
-                                <th>Police station №</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.createHistory()}
-                        </tbody>
-                    </Table>
-                </Col>
-                </Row>
+                    <Row>
+                        <Col md={1}/>
+                        <Col>
+                            <h3>Info</h3>
+                            <Table>
+                                <thead >
+                                <tr>
+                                    <th className={"text-danger"}>Rank</th>
+                                    <th className={"text-secondary"}>{this.props.info.rank}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Salary</th>
+                                    <th className={"text-secondary"}>{this.props.info.salary}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Police Station</th>
+                                    <th className={"text-secondary"}>{this.props.info.p_station}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Name</th>
+                                    <th className={"text-secondary"}>{this.props.info.name}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Surname</th>
+                                    <th className={"text-secondary"}>{this.props.info.surname}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Status</th>
+                                    <th className={"text-secondary"}>{this.props.info.status}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Jabber</th>
+                                    <th className={"text-secondary"}>{this.props.info.jabber}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Email</th>
+                                    <th className={"text-secondary"}>{this.props.info.email}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </Table>
+                        </Col>
+                        <Col>
+                            <h3>History of work</h3>
+                            <Table>
+                                <thead className={"text-danger"}>
+                                <tr>
+                                    <th>Start</th>
+                                    <th>Finish</th>
+                                    <th>Police station №</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {this.createHistory()}
+                                </tbody>
+                            </Table>
+                        </Col>
+                        <Col md={1}/>
+                    </Row>
                 </Table>
             </div>
         )
@@ -108,9 +104,10 @@ class PolicemanInfoComponent extends Component{
 
         return(
             <div>
-                <PolicemanHeader/>
+                <PolicemanInfoHeader/>
                 {this.loadInfo()}
                 <WarningComponent/>
+                <Footer/>
             </div>
         )
     }

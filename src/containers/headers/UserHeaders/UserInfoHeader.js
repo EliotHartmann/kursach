@@ -1,13 +1,13 @@
 import React, {Component} from "react";
-import SignOutComponent from "../../components/AuthComponents/SignOutComponent";
+import SignOutComponent from "../../../components/AuthComponents/SignOutComponent";
 import {
-    DISPATCHER_INFO,
-    DISPATCHER_NEW_CALL,
-    MAIN_PAGE,
-} from "../../constants/paths";
+    MAIN_PAGE, POLICEMAN_CALLS, POLICEMAN_DATABASE, POLICEMAN_INFO,
+    USER_INFO,
+    USER_STATS
+} from "../../../constants/paths";
 import {Navbar, NavbarBrand, NavLink, NavItem, NavbarToggler, Collapse, Nav} from "reactstrap";
 
-export default class DispatcherHeader extends Component{
+export default class UserInfoHeader extends Component{
     constructor(props) {
         super(props);
 
@@ -24,19 +24,21 @@ export default class DispatcherHeader extends Component{
     render() {
         return(
             <div>
-                <Navbar color="dark" light expand="md">
+                <Navbar color="dark" expand="md">
                     <NavbarBrand href={MAIN_PAGE}>
                         New York Police Department
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink href={DISPATCHER_INFO}>Info</NavLink>
+                        <Nav navbar>
+                            <NavItem active>
+                                <NavLink href={USER_INFO}>Info</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href={DISPATCHER_NEW_CALL}>Create call</NavLink>
+                                <NavLink href={USER_STATS}>Stats</NavLink>
                             </NavItem>
+                        </Nav>
+                        <Nav className="ml-auto">
                             <NavItem>
                                 <SignOutComponent/>
                             </NavItem>

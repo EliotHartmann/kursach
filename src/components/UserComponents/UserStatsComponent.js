@@ -2,8 +2,10 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {loadStats} from "../../store/actions/userActions";
-import {Form, Table} from "react-bootstrap";
-import UserHeader from "../../containers/headers/UserHeader";
+import {Button, Form} from "react-bootstrap";
+import {Col, Row, Table} from "reactstrap";
+import UserStatsHeader from "../../containers/headers/UserHeaders/UserStatsHeader";
+import Footer from "../../containers/Footer";
 
 class UserStatsComponent extends Component{
 
@@ -42,32 +44,45 @@ class UserStatsComponent extends Component{
     render() {
         return(
             <div>
-                <UserHeader/>
-                <Form inline>
-                    <Form.Group>
-                        <Form.Label>District</Form.Label>
-                        <Form.Control as="select" onChange={this.handleChange('district')}>
-                            <option>The Bronx</option>
-                            <option>Brooklyn</option>
-                            <option>Manhattan</option>
-                            <option>Queens</option>
-                            <option>Staten Island</option>
-                        </Form.Control>
-                    </Form.Group>
+                <UserStatsHeader/>
+                <Form>
+                    <Form.Row>
+                        <Col md={1}/>
+                        <Form.Group as={Col}>
+                            <Form.Label>District &nbsp;</Form.Label>
+                            <Form.Control as="select" onChange={this.handleChange('district')}>
+                                <option>The Bronx</option>
+                                <option>Brooklyn</option>
+                                <option>Manhattan</option>
+                                <option>Queens</option>
+                                <option>Staten Island</option>
+                            </Form.Control>
+                        </Form.Group>
+                        <Col md={1}/>
+                    </Form.Row>
                 </Form>
                 <Table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Area</th>
-                            <th>Crime number</th>
-                            <th>Population</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderDistrictStats()}
-                    </tbody>
+                    <Row>
+                        <Col md={1}/>
+                        <Col>
+                            <Table>
+                                <thead className={"text-danger"}>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Area</th>
+                                    <th>Crime number</th>
+                                    <th>Population</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {this.renderDistrictStats()}
+                                </tbody>
+                            </Table>
+                        </Col>
+                        <Col md={1}/>
+                    </Row>
                 </Table>
+                <Footer/>
             </div>
 
         )

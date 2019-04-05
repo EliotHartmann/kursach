@@ -5,9 +5,8 @@ import {Provider} from 'react-redux';
 import {Route, Router, Switch} from 'react-router-dom';
 import thunk from 'redux-thunk'
 import {initialState} from "./store/states";
-import 'bootstrap/dist/css/bootstrap.css';
-// import "./paper-dashboard-react-master/src/assets/scss/paper-dashboard.scss";
-// import "./paper-dashboard-react-master/src/assets/demo/demo.css";
+import "./paper-dashboard-react-master/src/assets/scss/paper-dashboard.scss";
+import "./paper-dashboard-react-master/src/assets/demo/demo.css";
 
 import history from './store/history';
 

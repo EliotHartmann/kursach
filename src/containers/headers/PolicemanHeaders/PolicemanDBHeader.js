@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import SignOutComponent from "../../components/AuthComponents/SignOutComponent";
-import {MAIN_PAGE, POLICEMAN_CALLS, POLICEMAN_DATABASE, POLICEMAN_INFO} from "../../constants/paths";
+import SignOutComponent from "../../../components/AuthComponents/SignOutComponent";
+import {MAIN_PAGE, POLICEMAN_CALLS, POLICEMAN_DATABASE, POLICEMAN_INFO} from "../../../constants/paths";
 import {Navbar, NavbarBrand, NavLink, NavItem, NavbarToggler, Collapse, Nav, Button} from "reactstrap";
 
-export default class PolicemanHeader extends Component{
+export default class PolicemanDBHeader extends Component{
     constructor(props) {
         super(props);
 
@@ -26,16 +26,18 @@ export default class PolicemanHeader extends Component{
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
+                        <Nav navbar>
                             <NavItem>
-                                <Button outline color={"info"} href={POLICEMAN_INFO}>Info</Button>
+                                <NavLink href={POLICEMAN_INFO}>Info</NavLink>
                             </NavItem>
                             <NavItem>
-                                <Button outline color={"info"} href={POLICEMAN_CALLS}>Calls</Button>
+                                <NavLink href={POLICEMAN_CALLS}>Calls</NavLink>
                             </NavItem>
-                            <NavItem>
-                                <Button outline color={"info"} href={POLICEMAN_DATABASE}>Database</Button>
+                            <NavItem active>
+                                <NavLink href={POLICEMAN_DATABASE}>Database</NavLink>
                             </NavItem>
+                        </Nav>
+                        <Nav className="ml-auto">
                             <NavItem>
                                 <SignOutComponent/>
                             </NavItem>

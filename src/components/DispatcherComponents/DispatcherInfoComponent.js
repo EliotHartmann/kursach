@@ -4,8 +4,8 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {loadInfo} from "../../store/actions/policemanActions";
 import WarningComponent from "../WarningComponent";
-import AdminHeader from "../../containers/headers/AdminHeader";
-import DispatcherHeader from "../../containers/headers/DispatcherHeader";
+import DispatcherInfoHeader from "../../containers/headers/DispatcherHeaders/DispatcherInfoHeader";
+import Footer from "../../containers/Footer";
 
 class DispatcherInfoComponent extends Component{
     constructor(props){
@@ -32,66 +32,58 @@ class DispatcherInfoComponent extends Component{
         this.props.loadInfo();
         return(
             <div>
-                <DispatcherHeader/>
                 <Table>
                     <Row>
+                        <Col md={1}/>
                         <Col>
+                            <h3>Info</h3>
                             <Table>
-                                <thead>
+                                <thead >
                                 <tr>
-                                    <th>Rank</th>
-                                    <th>Salary</th>
-                                    <th>Police Station</th>
+                                    <th className={"text-danger"}>Rank</th>
+                                    <th className={"text-secondary"}>{this.props.info.rank}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Salary</th>
+                                    <th className={"text-secondary"}>{this.props.info.salary}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Police Station</th>
+                                    <th className={"text-secondary"}>{this.props.info.p_station}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Name</th>
+                                    <th className={"text-secondary"}>{this.props.info.name}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Surname</th>
+                                    <th className={"text-secondary"}>{this.props.info.surname}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Status</th>
+                                    <th className={"text-secondary"}>{this.props.info.status}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Jabber</th>
+                                    <th className={"text-secondary"}>{this.props.info.jabber}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Email</th>
+                                    <th className={"text-secondary"}>{this.props.info.email}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>{this.props.info.rank}</td>
-                                    <td>{this.props.info.salary}</td>
-                                    <td>{this.props.info.p_station}</td>
-                                </tr>
-                                </tbody>
-                            </Table>
-                            <Table>
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Surname</th>
-                                    <th>Status</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>{this.props.info.name}</td>
-                                    <td>{this.props.info.surname}</td>
-                                    <td>{this.props.info.status}</td>
-                                </tr>
-                                </tbody>
-                            </Table>
-                            <Table>
-                                <thead>
-                                <tr>
-                                    <th>Jabber</th>
-                                    <th>E-mail</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>{this.props.info.jabber}</td>
-                                    <td>{this.props.info.email}</td>
-                                    <td></td>
-                                </tr>
                                 </tbody>
                             </Table>
                         </Col>
                         <Col>
-                            <Table bordered stripped>
-                                <thead>
+                            <h3>History of work</h3>
+                            <Table>
+                                <thead className={"text-danger"}>
                                 <tr>
-                                    <td>Start</td>
-                                    <td>Finish</td>
-                                    <td>Police station №</td>
+                                    <th>Start</th>
+                                    <th>Finish</th>
+                                    <th>Police station №</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -99,6 +91,7 @@ class DispatcherInfoComponent extends Component{
                                 </tbody>
                             </Table>
                         </Col>
+                        <Col md={1}/>
                     </Row>
                 </Table>
             </div>
@@ -110,8 +103,10 @@ class DispatcherInfoComponent extends Component{
 
         return(
             <div>
+                <DispatcherInfoHeader/>
                 {this.loadInfo()}
                 <WarningComponent/>
+                <Footer/>
             </div>
         )
     }

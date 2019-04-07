@@ -41,7 +41,7 @@ export function DBSearch(name, surname, p_number){
         // data.append('passport', p_number);
         // data.append('name', name);
         // data.append('surname', surname);
-        fetch(apiUrl+'/search?passport='+p_number+"&name="+name+"&surname="+surname,  {
+        fetch(apiUrl+'/search?passport='+p_number+"&surname="+surname+"&name="+name,  {
             method: 'GET',
             redirect: "follow",
             credentials: 'include'
@@ -69,7 +69,7 @@ export function DBSearch(name, surname, p_number){
 export function callSubmit(){
     console.log("callSubmit method called");
     return (dispatch)=>{
-        fetch(apiUrl+'/officer/active_call', {
+        fetch(apiUrl+'officer/active_call', {
             method: 'POST',
             redirect: "follow",
             credentials: 'include'
@@ -96,7 +96,7 @@ export function callSubmit(){
 export function loadCalls(){
     console.log("loadCalls method called");
     return (dispatch)=>{
-        fetch('www.nypolicecw.com:7313/officer/call_history', {
+        fetch(apiUrl+'officer/call_history', {
             method: 'GET',
             redirect: "follow",
             credentials: 'include'

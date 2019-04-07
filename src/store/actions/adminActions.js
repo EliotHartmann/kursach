@@ -1,6 +1,7 @@
 import {USER_CREATED, WARNING} from "../../constants/actionTypes";
 import history from "../history";
 import {RESTRICTED_PAGE} from "../../constants/paths";
+import {apiUrl} from "../../index";
 
 export function createUser(passport, rank, jabber, email, shift, p_id){
     return (dispatch) =>{
@@ -15,7 +16,7 @@ export function createUser(passport, rank, jabber, email, shift, p_id){
         };
 
         console.log(JSON.stringify(data));
-        fetch('www.nypolicecw.com:7313/dispatcher/create_user', {
+        fetch(apiUrl + 'dispatcher/create_user', {
             method: 'POST',
             body: JSON.stringify(data),
             redirect: "follow",

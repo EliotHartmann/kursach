@@ -1,13 +1,14 @@
-import {USER_INFO_LOADED, SESSION_CLOSED, STATS_LOADED, WARNING} from "../../constants/actionTypes";
+import {STATS_LOADED, WARNING} from "../../constants/actionTypes";
 import history from "../history";
-import {MAIN_PAGE, RESTRICTED_PAGE} from "../../constants/paths";
+import {RESTRICTED_PAGE} from "../../constants/paths";
+import {apiUrl} from "../../index";
 
 
 export function loadStats(){
     console.log("user loadStats method called");
     return (dispatch) =>{
         console.log("loadInfo method called");
-        fetch('www.nypolicecw.com:7313/map', {
+        fetch(apiUrl+'map', {
             method: 'GET',
             redirect: "follow",
             credentials: 'include'

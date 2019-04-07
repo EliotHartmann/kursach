@@ -6,6 +6,8 @@ import {
 } from "../../constants/actionTypes";
 import history from '../history';
 import {MAIN_PAGE, RESTRICTED_PAGE} from "../../constants/paths";
+import {apiUrl} from "../../index";
+
 
 export function makeWarning(message) {
     console.log("makeWarning method called");
@@ -18,7 +20,7 @@ export function makeWarning(message) {
 export function login() {
     console.log("login method called");
     return (dispatch) => {
-        fetch('www.nypolicecw.com:7313/login', {
+        fetch(apiUrl+'login', {
             method: 'GET',
             redirect: 'follow',
             credentials: 'include'
@@ -43,7 +45,7 @@ export function login() {
 export function logout() {
     console.log("logout method called");
     return (dispatch) =>{
-        fetch('www.nypolicecw.com:7313/logout', {
+        fetch(apiUrl+'logout', {
             method: 'GET',
             credentials: 'include'
         }).then(response=>{
@@ -73,7 +75,7 @@ export function register(login, password) {
         };
         console.log(JSON.stringify(data));
     return (dispatch) =>{
-        fetch('www.nypolicecw.com:7313/register', {
+        fetch(apiUrl+'register', {
             method: 'POST',
             body: JSON.stringify(data),
             redirect: "follow",

@@ -20,7 +20,7 @@ import {
     POLICEMAN_CALLS,
     POLICEMAN_DATABASE,
     DISPATCHER_INFO,
-    DISPATCHER_NEW_CALL, USER_INFO, USER_STATS, POLICEMAN, INFO, NEWS_PAGE, CAREER_PAGE
+    DISPATCHER_NEW_CALL, USER_STATS, NEWS_PAGE, CAREER_PAGE
 } from "./constants/paths";
 
 import AuthPage from "./containers/pages/AuthPage";
@@ -41,7 +41,7 @@ import UserStatsComponent from "./components/UserComponents/UserStatsComponent";
 import NewsPage from "./containers/pages/NewsPage";
 import CareerPage from "./containers/pages/CareerPage";
 
-export const apiUrl = "192.168.43.80:7313";
+export const apiUrl = "http://nypolicecw.com:7313/";
 const store = createStore(IndexReducer, initialState, applyMiddleware(thunk));
 
 ReactDOM.render(

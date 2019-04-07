@@ -1,6 +1,8 @@
 import history from "../history";
-import {CALL_CREATED, SESSION_CLOSED, WARNING} from "../../constants/actionTypes";
-import {MAIN_PAGE, RESTRICTED_PAGE} from "../../constants/paths";
+import {CALL_CREATED, WARNING} from "../../constants/actionTypes";
+import {RESTRICTED_PAGE} from "../../constants/paths";
+import {apiUrl} from "../../index";
+
 
 export function newCall(street, house, description, type){
     return (dispatch) =>{
@@ -15,7 +17,7 @@ export function newCall(street, house, description, type){
         };
 
         console.log(JSON.stringify(data));
-        fetch('www.nypolicecw.com:7313/dispatcher/create_call', {
+        fetch(apiUrl+'dispatcher/create_call', {
                     method: 'POST',
                     redirect: "follow",
                     body: JSON.stringify(data),

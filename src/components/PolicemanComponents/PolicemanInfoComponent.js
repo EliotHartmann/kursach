@@ -4,7 +4,6 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {loadInfo} from "../../store/actions/policemanActions";
 import WarningComponent from "../WarningComponent";
-import DispatcherInfoHeader from "../../containers/headers/DispatcherHeaders/DispatcherInfoHeader";
 import Footer from "../../containers/Footer";
 import PolicemanInfoHeader from "../../containers/headers/PolicemanHeaders/PolicemanInfoHeader";
 

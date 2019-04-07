@@ -6,7 +6,6 @@ export const POLICEMAN_INFO = 'officer_info';
 export const POLICEMAN_CALLS = 'officer_calls';
 export const POLICEMAN_DATABASE = 'officer_database';
 export const DISPATCHER_NEW_CALL = 'dispatcher_newcall';
-export const USER_INFO = 'user_info';
 export const USER_STATS = 'user_stats';
 export const DISPATCHER_INFO = 'dispatcher_info';
 export const ADMIN_PAGE = 'admin';

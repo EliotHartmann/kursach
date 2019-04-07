@@ -66,18 +66,11 @@ export function DBSearch(name, surname, p_number){
     }
 }
 
-export function callSubmit(description, time, status){
+export function callSubmit(){
     console.log("callSubmit method called");
     return (dispatch)=>{
-        let data = {
-            description: description,
-            time: time,
-            status: status ? "ACTIVE" : "FINISHED"
-        };
-        console.log(data);
         fetch(apiUrl+'/officer/active_call', {
             method: 'POST',
-            body: JSON.stringify(data),
             redirect: "follow",
             credentials: 'include'
         }).then(response=>{

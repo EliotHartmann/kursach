@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import {loadStats} from "../../store/actions/userActions";
 import {Button, Form} from "react-bootstrap";
 import {Col, Row, Table} from "reactstrap";
-import UserStatsHeader from "../../containers/headers/UserHeaders/UserStatsHeader";
+import UserHeader from "../../containers/headers/UserHeader";
 import Footer from "../../containers/Footer";
 
 class UserStatsComponent extends Component{
@@ -44,7 +44,7 @@ class UserStatsComponent extends Component{
     render() {
         return(
             <div>
-                <UserStatsHeader/>
+                <UserHeader/>
                 <Form>
                     <Form.Row>
                         <Col md={1}/>
@@ -82,6 +82,7 @@ class UserStatsComponent extends Component{
                         <Col md={1}/>
                     </Row>
                 </Table>
+                тут должна быть конечно как бы интерактивная карта но ее нет
                 <Footer/>
             </div>
 

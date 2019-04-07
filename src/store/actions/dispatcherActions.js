@@ -2,19 +2,16 @@ import history from "../history";
 import {CALL_CREATED, SESSION_CLOSED, WARNING} from "../../constants/actionTypes";
 import {MAIN_PAGE, RESTRICTED_PAGE} from "../../constants/paths";
 
-export function newCall(street, house, district, description, type){
+export function newCall(street, house, description, type){
     return (dispatch) =>{
         console.log("newCall function called");
         const data={
-            location: {
+            callLocation: {
                 street: street,
-                houseNumber: house,
-                district: {
-                    name: district,
-                }
+                houseNumber: house
             },
             description: description,
-            type: type,
+            crimeType: type,
         };
 
         console.log(JSON.stringify(data));

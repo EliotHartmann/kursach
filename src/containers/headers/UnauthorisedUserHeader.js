@@ -4,6 +4,7 @@ import React, {Component} from "react";
 import {login} from "../../store/actions/authActions";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import {Image} from "react-bootstrap";
 
 class UnauthorisedUserHeader extends Component{
     constructor(props) {
@@ -29,6 +30,8 @@ class UnauthorisedUserHeader extends Component{
             <div>
             <Navbar color="dark" expand="lg">
                 <NavbarBrand href={MAIN_PAGE}>
+                    <Image src={"../../static/img/NYPD_logo.png"} width={36} height={45} />
+                    &nbsp;
                     New York Police Department
                 </NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />

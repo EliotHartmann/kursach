@@ -45,10 +45,9 @@ export function logout() {
     return (dispatch) =>{
         fetch('www.nypolicecw.com:7313/logout', {
             method: 'GET',
-            redirect: "follow",
             credentials: 'include'
         }).then(response=>{
-            if(response.ok){
+            if(response.status===302){
                 history.push(MAIN_PAGE);
                 dispatch({
                     type: LOGOUT,
@@ -69,8 +68,8 @@ export function logout() {
 export function register(login, password) {
     console.log("register method called");
         const data = {
-          login: login,
-          password: password
+          username: login,
+          userPassword: password
         };
         console.log(JSON.stringify(data));
     return (dispatch) =>{

@@ -8,7 +8,7 @@ export default function adminReducer(state = initialState, action){
         let loadedUserInfo = JSON.parse(action.userInfo);
         let userInfo = {
             login: loadedUserInfo.login,
-            password: loadedUserInfo.password
+            password: loadedUserInfo.userPassword
         };
         return {...state, message:action.payload, createdUserInfo: userInfo}
     } else {

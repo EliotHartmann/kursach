@@ -19,14 +19,14 @@ export const initialState={
                 start: "2017-03-27 16:45:27",
                 finish: "2018-03-27 16:45:25",
                 policeStation: {
-                    name: 'police station name'
+                    id: '123'
                 }
             },
             {
-                start: "2018-09-27 16:45:27",
+                start: "2018-09-27 16:45:27", //тут ваще будут милисекунды их надо в редусере перевести в нормальное время....
                 finish: "2018-09-27 16:45:25",
                 policeStation: {
-                    name: 'police station name 2'
+                    id: '2'
                 }
             }
         ]

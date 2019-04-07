@@ -22,6 +22,8 @@ export default class PolicemanCallsHeader extends Component{
             <div>
                 <Navbar color="dark" expand="md">
                     <NavbarBrand href={MAIN_PAGE}>
+                        <img src={"../../../static/img/NYPD_logo.png"} width={36} height={45} alt={"картинка не грузица..."}/>
+                        &nbsp;
                         New York Police Department
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />

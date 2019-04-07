@@ -1,15 +1,17 @@
-import {SESSION_CLOSED, USER_CREATED, WARNING} from "../../constants/actionTypes";
+import {USER_CREATED, WARNING} from "../../constants/actionTypes";
 import history from "../history";
-import {MAIN_PAGE, RESTRICTED_PAGE} from "../../constants/paths";
+import {RESTRICTED_PAGE} from "../../constants/paths";
 
-export function createUser(passport, rank, jabber, email){
+export function createUser(passport, rank, jabber, email, shift, p_id){
     return (dispatch) =>{
         console.log("newCall function called");
         const data={
-            passport: passport,
+            passportNumber: passport,
             rank: rank,
+            shift: shift,
             jabber: jabber,
-            email: email
+            mail: email,
+            stationId: p_id
         };
 
         console.log(JSON.stringify(data));

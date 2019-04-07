@@ -30,6 +30,7 @@ class PolicemanCallsComponent extends Component{
                     <td>{call.time}</td>
                     <td><Button
                         color={"outline-success"}
+                        size={"sm"}
                         disabled={call.status}
                         onClick={this.props.callSubmit(call.description, call.time, call.status)}>
                         Finish call

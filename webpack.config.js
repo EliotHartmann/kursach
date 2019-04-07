@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const CopyWebpackPlugin= require('copy-webpack-plugin');
 
 module.exports = {
     entry: [
@@ -50,6 +50,19 @@ module.exports = {
                     }
                 ]
             }
+            // {
+            //     test: /\.(gif|img|jpe?g|svg)$/i,
+            //     use: [
+            //         'file-loader',
+            //         {
+            //             loader: 'image-webpack-loader',
+            //             options: {
+            //                 bypassOnDebug: true, // webpack@1.x
+            //                 disable: true, // webpack@2.x and newer
+            //             },
+            //         },
+            //     ],
+            // }
         ]
     },
     plugins: [
@@ -59,7 +72,20 @@ module.exports = {
         new ExtractTextPlugin({
             filename: './css/style.bundle.css',
             allChunks: true,
-        })
+        }),
+        new CopyWebpackPlugin([{
+            from: './src/static/img',
+            to: './static/img'
+        },
+            {
+                from: './src/static/favicon',
+                to: './static/favicon'
+            },
+            {
+                from: './src/static/svg',
+                to: './static/svg'
+            }
+        ]),
     ],
     devServer: {
         historyApiFallback: true

@@ -12,14 +12,18 @@ export default function policemanReducer(state = initialState, action){
             let loadedInfo = JSON.parse(action.payload);
             console.log(loadedInfo);
             let info = {
+                shift: loadedInfo.shift,
+                officerStatus: loadedInfo.officerStatus,
+                id: loadedInfo.id,
                 salary: loadedInfo.salary,
+                premium: loadedInfo.premium,
                 rank: loadedInfo.rank,
                 status: loadedInfo.status,
-                p_station: loadedInfo.policeStation.name,
+                p_station: loadedInfo.policeStation.id,
                 name: loadedInfo.person.name,
                 surname: loadedInfo.person.surname,
                 jabber: loadedInfo.jabber,
-                email: loadedInfo.user.email,
+                email: loadedInfo.user.mail,
                 historyOfWork: loadedInfo.workExperiences
             };
             console.log(info);
@@ -34,7 +38,11 @@ export default function policemanReducer(state = initialState, action){
                 calls.push({
                     description: call.description,
                     time: call.time,
-                    status: call.status === "ACTIVE"
+                    status: call.status === "ACTIVE",
+                    callLocation:{
+                        street: call.callLocation.street,
+                        houseNumber: call.callLocation.houseNumber
+                    }
                 })
             }
             console.log(calls);

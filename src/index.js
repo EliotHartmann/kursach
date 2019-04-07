@@ -5,8 +5,7 @@ import {Provider} from 'react-redux';
 import {Route, Router, Switch} from 'react-router-dom';
 import thunk from 'redux-thunk'
 import {initialState} from "./store/states";
-import "./paper-dashboard-react-master/src/assets/scss/paper-dashboard.scss";
-import "./paper-dashboard-react-master/src/assets/demo/demo.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import history from './store/history';
 
@@ -21,7 +20,7 @@ import {
     POLICEMAN_CALLS,
     POLICEMAN_DATABASE,
     DISPATCHER_INFO,
-    DISPATCHER_NEW_CALL, USER_INFO, USER_STATS
+    DISPATCHER_NEW_CALL, USER_INFO, USER_STATS, POLICEMAN, INFO
 } from "./constants/paths";
 
 import AuthPage from "./containers/pages/AuthPage";
@@ -38,7 +37,6 @@ import PolicemanCallsComponent from "./components/PolicemanComponents/PolicemanC
 import PolicemanWorkWithDBComponent from "./components/PolicemanComponents/PolicemanWorkWithDBComponent";
 import DispatcherInfoComponent from "./components/DispatcherComponents/DispatcherInfoComponent";
 import DispatcherCallComponent from "./components/DispatcherComponents/DispatcherCallComponent";
-import UserInfoComponent from "./components/UserComponents/UserInfoComponent";
 import UserStatsComponent from "./components/UserComponents/UserStatsComponent";
 
 export const apiUrl = "192.168.43.80:7313";
@@ -57,7 +55,6 @@ ReactDOM.render(
                 <Route path={PATH+POLICEMAN_DATABASE} component={PolicemanWorkWithDBComponent}/>
                 <Route path={PATH+DISPATCHER_INFO} component={DispatcherInfoComponent}/>
                 <Route path={PATH+DISPATCHER_NEW_CALL} component={DispatcherCallComponent}/>
-                <Route path={PATH+USER_INFO} component={UserInfoComponent}/>
                 <Route path={PATH+USER_STATS} component={UserStatsComponent}/>
                 <Route path={PATH+ADMIN_PAGE} component={AdminPage}/>
                 <Route path={PATH+RESTRICTED_PAGE} component={RestrictedPage}/>

@@ -20,7 +20,7 @@ import {
     POLICEMAN_CALLS,
     POLICEMAN_DATABASE,
     DISPATCHER_INFO,
-    DISPATCHER_NEW_CALL, USER_INFO, USER_STATS, POLICEMAN, INFO
+    DISPATCHER_NEW_CALL, USER_INFO, USER_STATS, POLICEMAN, INFO, NEWS_PAGE, CAREER_PAGE
 } from "./constants/paths";
 
 import AuthPage from "./containers/pages/AuthPage";
@@ -38,6 +38,8 @@ import PolicemanWorkWithDBComponent from "./components/PolicemanComponents/Polic
 import DispatcherInfoComponent from "./components/DispatcherComponents/DispatcherInfoComponent";
 import DispatcherCallComponent from "./components/DispatcherComponents/DispatcherCallComponent";
 import UserStatsComponent from "./components/UserComponents/UserStatsComponent";
+import NewsPage from "./containers/pages/NewsPage";
+import CareerPage from "./containers/pages/CareerPage";
 
 export const apiUrl = "192.168.43.80:7313";
 const store = createStore(IndexReducer, initialState, applyMiddleware(thunk));
@@ -58,6 +60,8 @@ ReactDOM.render(
                 <Route path={PATH+USER_STATS} component={UserStatsComponent}/>
                 <Route path={PATH+ADMIN_PAGE} component={AdminPage}/>
                 <Route path={PATH+RESTRICTED_PAGE} component={RestrictedPage}/>
+                <Route path={PATH+NEWS_PAGE} component={NewsPage}/>
+                <Route path={PATH+CAREER_PAGE} component={CareerPage}/>
                 <Route component={NotFoundPage}/>
             </Switch>
         </Router>

@@ -10,3 +10,5 @@ export const USER_STATS = 'user_stats';
 export const DISPATCHER_INFO = 'dispatcher_info';
 export const ADMIN_PAGE = 'admin';
 export const RESTRICTED_PAGE = 'restricted';
+export const NEWS_PAGE = 'news';
+export const CAREER_PAGE = 'career';

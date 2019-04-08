@@ -5,7 +5,7 @@ import {initialState} from "../states";
 
 export default function adminReducer(state = initialState, action){
     if (action.type === USER_CREATED) {
-        let loadedUserInfo = JSON.parse(action.userInfo);
+        let loadedUserInfo = action.userInfo;
         let userInfo = {
             login: loadedUserInfo.login,
             password: loadedUserInfo.userPassword

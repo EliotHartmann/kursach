@@ -6,6 +6,7 @@ import {
     USER_STATS
 } from "../../constants/paths";
 import {Navbar, NavbarBrand, NavLink, NavItem, NavbarToggler, Collapse, Nav} from "reactstrap";
+import NotificationComponent from "../../components/NotificationComponent";
 
 export default class UserHeader extends Component{
     constructor(props) {
@@ -33,6 +34,10 @@ export default class UserHeader extends Component{
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto">
+                            <NavItem>
+                                <NotificationComponent/>
+                                &nbsp;
+                            </NavItem>
                             <NavItem>
                                 <SignOutComponent/>
                             </NavItem>

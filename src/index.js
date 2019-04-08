@@ -41,7 +41,7 @@ import UserStatsComponent from "./components/UserComponents/UserStatsComponent";
 import NewsPage from "./containers/pages/NewsPage";
 import CareerPage from "./containers/pages/CareerPage";
 
-export const apiUrl = "http://nypolicecw.com:7313/";
+export const apiUrl = "http://www.nypolicecw.com:7313";
 const store = createStore(IndexReducer, initialState, applyMiddleware(thunk));
 
 ReactDOM.render(

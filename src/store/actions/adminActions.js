@@ -1,7 +1,7 @@
 import {USER_CREATED, WARNING} from "../../constants/actionTypes";
 import history from "../history";
 import {RESTRICTED_PAGE} from "../../constants/paths";
-import {apiUrl} from "../../index";
+
 
 export function createUser(passport, rank, jabber, email, shift, p_id){
     return (dispatch) =>{
@@ -16,20 +16,28 @@ export function createUser(passport, rank, jabber, email, shift, p_id){
         };
 
         console.log(JSON.stringify(data));
-        fetch(apiUrl + 'dispatcher/create_user', {
+        fetch('http://www.nypolicecw.com:7313admin/create_officer', {
             method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(data),
-            redirect: "follow",
             credentials: 'include'
         }).then(response =>{
+            console.log(response);
             if(response.ok){
+                let userInfo = response.json();
                 dispatch({
                     type: USER_CREATED,
                     payload: "User successfully created.",
-                    userInfo: response.text()
+                    userInfo: userInfo
                 });
             } else if (response.status === 401){
                 history.push(RESTRICTED_PAGE);
+            } else if (response.redirected){
+                console.log(response.headers.get("Location"));
+                window.location.href = response.url;
             }
             })
             .catch(error => {

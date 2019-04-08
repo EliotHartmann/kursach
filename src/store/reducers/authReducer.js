@@ -11,7 +11,9 @@ import {
 export default function authReducer(state = initialState, action){
     switch(action.type){
 
-        case LOGOUT:
+        case LOGOUT:{
+
+        }
             return {...state,
                 login: '',
                 message: '',

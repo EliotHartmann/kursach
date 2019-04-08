@@ -9,7 +9,7 @@ import {initialState} from "../states";
 export default function policemanReducer(state = initialState, action){
     switch(action.type){
         case INFO_LOADED:{
-            let loadedInfo = JSON.parse(action.payload);
+            let loadedInfo = action.payload;
             console.log(loadedInfo);
             let info = {
                 shift: loadedInfo.shift,
@@ -30,7 +30,7 @@ export default function policemanReducer(state = initialState, action){
             return {...state, info: info};
         }
         case CALLS_LOADED:{
-            let loadedCalls = JSON.parse(action.payload);
+            let loadedCalls = action.payload;
             console.log(loadedCalls);
             let calls = [];
             for(let i=0; i<loadedCalls.length; i++){
@@ -52,7 +52,7 @@ export default function policemanReducer(state = initialState, action){
             return {...state, message: action.payload};
         }
         case SEARCH_COMPLETED:{
-            let loadedHumans = JSON.parse(action.payload);
+            let loadedHumans = action.payload;
             console.log(loadedHumans);
             let humans = [];
             for(let i=0; i<loadedHumans.length; i++){

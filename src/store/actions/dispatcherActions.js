@@ -1,7 +1,6 @@
 import history from "../history";
 import {CALL_CREATED, WARNING} from "../../constants/actionTypes";
 import {RESTRICTED_PAGE} from "../../constants/paths";
-import {apiUrl} from "../../index";
 
 
 export function newCall(street, house, description, type){
@@ -17,12 +16,16 @@ export function newCall(street, house, description, type){
         };
 
         console.log(JSON.stringify(data));
-        fetch(apiUrl+'dispatcher/create_call', {
-                    method: 'POST',
-                    redirect: "follow",
-                    body: JSON.stringify(data),
-                    credentials: 'include'
+        fetch('http://www.nypolicecw.com:7313/dispatcher/create_call', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: 'include'
         }).then(response =>{
+            console.log(response);
                 if(response.ok){
                     dispatch({
                         type: CALL_CREATED,
@@ -30,8 +33,11 @@ export function newCall(street, house, description, type){
                     });
                 } else if (response.status === 401){
                     history.push(RESTRICTED_PAGE);
+                } else if (response.redirected){
+                    console.log(response.url);
+                    window.location.href = response.url;
                 }
-            })
+        })
             .catch(error => {
                 dispatch({
                     type: WARNING,

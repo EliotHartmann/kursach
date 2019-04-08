@@ -16,3 +16,6 @@ export const USER_CREATED ="USER_CREATED";
 
 export const STATS_LOADED = "STATS_LOADED";
 export const USER_INFO_LOADED = "USER_INFO_LOADED";
+
+
+export const MESSAGE_DELETED = 'MESSAGE_DELETED';

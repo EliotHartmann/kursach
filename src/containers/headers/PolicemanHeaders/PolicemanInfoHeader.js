@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import SignOutComponent from "../../../components/AuthComponents/SignOutComponent";
 import {MAIN_PAGE, POLICEMAN_CALLS, POLICEMAN_DATABASE, POLICEMAN_INFO} from "../../../constants/paths";
 import {Navbar, NavbarBrand, NavLink, NavItem, NavbarToggler, Collapse, Nav, Button} from "reactstrap";
+import NotificationComponent from "../../../components/NotificationComponent";
 
 export default class PolicemanInfoHeader extends Component{
     constructor(props) {
@@ -40,6 +41,10 @@ export default class PolicemanInfoHeader extends Component{
                             </NavItem>
                         </Nav>
                         <Nav className="ml-auto">
+                            <NavItem>
+                                <NotificationComponent/>
+                                &nbsp;
+                            </NavItem>
                             <NavItem>
                                 <SignOutComponent/>
                             </NavItem>

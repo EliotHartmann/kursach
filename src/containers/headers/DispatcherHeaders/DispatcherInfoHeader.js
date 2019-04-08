@@ -6,6 +6,7 @@ import {
     MAIN_PAGE
 } from "../../../constants/paths";
 import {Navbar, NavbarBrand, NavLink, NavItem, NavbarToggler, Collapse, Nav} from "reactstrap";
+import NotificationComponent from "../../../components/NotificationComponent";
 
 export default class DispatcherInfoHeader extends Component{
     constructor(props) {
@@ -41,6 +42,10 @@ export default class DispatcherInfoHeader extends Component{
                             </NavItem>
                         </Nav>
                         <Nav className="ml-auto">
+                            <NavItem>
+                                <NotificationComponent/>
+                                &nbsp;
+                            </NavItem>
                             <NavItem>
                                 <SignOutComponent/>
                             </NavItem>

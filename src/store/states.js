@@ -13,6 +13,10 @@ export const initialState={
         surname: 'Evergarden',
         jabber: 'jabber',
         email: 'email@email.com',
+        officerStatus: '123',
+        shift: 'DAY',
+        id: '1233',
+        premium: '12344',
         status: 'ALIVE',
         historyOfWork: [
             {
@@ -78,6 +82,13 @@ export const initialState={
     userInfo: {
         username: 'username',
         email: 'username@mail.mail'
-    }
+    },
+    messages:[{
+        data: "message 1",
+        id: 0
+    }, {
+        data: "message 2",
+        id: 1
+    }]
 };
 

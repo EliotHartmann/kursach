@@ -21,7 +21,7 @@ class PolicemanInfoComponent extends Component{
                 <tr>
                     <td>{a.start}</td>
                     <td>{a.finish}</td>
-                    <td>{a.policeStation.name}</td>
+                    <td>{a.policeStation.id}</td>
                 </tr>
             )
         }
@@ -40,12 +40,20 @@ class PolicemanInfoComponent extends Component{
                             <Table>
                                 <thead >
                                 <tr>
+                                    <th className={"text-danger"}>ID</th>
+                                    <th className={"text-secondary"}>{this.props.info.id}</th>
+                                </tr>
+                                <tr>
                                     <th className={"text-danger"}>Rank</th>
                                     <th className={"text-secondary"}>{this.props.info.rank}</th>
                                 </tr>
                                 <tr>
                                     <th className={"text-danger"}>Salary</th>
                                     <th className={"text-secondary"}>{this.props.info.salary}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Premium</th>
+                                    <th className={"text-secondary"}>{this.props.info.premium}</th>
                                 </tr>
                                 <tr>
                                     <th className={"text-danger"}>Police Station</th>
@@ -70,6 +78,14 @@ class PolicemanInfoComponent extends Component{
                                 <tr>
                                     <th className={"text-danger"}>Email</th>
                                     <th className={"text-secondary"}>{this.props.info.email}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Shift</th>
+                                    <th className={"text-secondary"}>{this.props.info.shift}</th>
+                                </tr>
+                                <tr>
+                                    <th className={"text-danger"}>Officer Status</th>
+                                    <th className={"text-secondary"}>{this.props.info.officerStatus}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

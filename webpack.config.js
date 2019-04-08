@@ -78,10 +78,6 @@ module.exports = {
             to: './static/img'
         },
             {
-                from: './src/static/favicon',
-                to: './static/favicon'
-            },
-            {
                 from: './src/static/svg',
                 to: './static/svg'
             }

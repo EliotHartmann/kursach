@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import SignOutComponent from "../../components/AuthComponents/SignOutComponent";
 import {MAIN_PAGE} from "../../constants/paths";
 import {Navbar, NavbarBrand, NavItem, NavbarToggler, Collapse, Nav} from "reactstrap";
+import NotificationComponent from "../../components/NotificationComponent";
 
 export default class AdminHeader extends Component{
     constructor(props) {
@@ -29,6 +30,10 @@ export default class AdminHeader extends Component{
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <NotificationComponent/>
+                                &nbsp;
+                            </NavItem>
                             <NavItem>
                                 <SignOutComponent/>
                             </NavItem>

@@ -46,10 +46,6 @@ class DispatcherCallComponent extends Component{
                             <Form.Label>House №</Form.Label>
                             <Form.Control type="text" placeholder="Enter House №" onChange={this.handleChange('house')}/>
                         </Form.Group>
-                        <Form.Group as={Col}>
-                            <Form.Label>District Name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter District name" onChange={this.handleChange('district')}/>
-                        </Form.Group>
                         <Col md={1}/>
                     </Form.Row>
                     <Form.Row>
@@ -83,7 +79,7 @@ class DispatcherCallComponent extends Component{
                     </Form.Row>
                     <Form.Row>
                         <Col md={1}/>
-                        <Button variant="outline-primary" type="submit" onClick={this.newCall(this.state.street, this.state.house, this.state.district, this.state.description, this.state.type)}>
+                        <Button variant="outline-primary" onClick={this.newCall(this.state.street, this.state.house, this.state.district, this.state.description, this.state.type)}>
                             Create call
                         </Button>
                     </Form.Row>

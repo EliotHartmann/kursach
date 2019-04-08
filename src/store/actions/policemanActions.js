@@ -6,23 +6,31 @@ import {
     WARNING
 } from "../../constants/actionTypes";
 import history from "../history";
-import {apiUrl} from "../../index";
 import {RESTRICTED_PAGE} from "../../constants/paths";
 
 export function loadInfo(){
     return (dispatch) =>{
         console.log("loadInfo method called");
-        fetch(`${apiUrl}/officer/info`, {
+        fetch('http://www.nypolicecw.com:7313/officer/info', {
             method: 'GET',
-            redirect: "follow"
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
         }).then(response=>{
+            console.log(response);
             if(response.ok){
+                let payload = response.json();
                 dispatch({
                     type: INFO_LOADED,
-                    payload: response.text()
+                    payload: payload
                 })
             }else if (response.status === 401){
                 history.push(RESTRICTED_PAGE);
+            }else if (response.redirected){
+                console.log(response.url);
+                window.location.href = response.url;
             }
         })
             .catch(error => {
@@ -37,24 +45,28 @@ export function loadInfo(){
 export function DBSearch(name, surname, p_number){
     console.log("DBSearch method called");
     return (dispatch)=>{
-        // let data = new URLSearchParams();
-        // data.append('passport', p_number);
-        // data.append('name', name);
-        // data.append('surname', surname);
-        fetch(apiUrl+'/search?passport='+p_number+"&surname="+surname+"&name="+name,  {
+        fetch('http://www.nypolicecw.com:7313/officer/search?passport='+p_number+"&surname="+surname+"&name="+name,  {
             method: 'GET',
-            redirect: "follow",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             credentials: 'include'
             // body: data
         }).then(response=>{
+            console.log(response);
             if(response.ok){
-                console.log(response.text());
+                console.log(response);
+                let payload = response.json();
                 dispatch({
                     type: SEARCH_COMPLETED,
-                    payload: response.text()
+                    payload: payload
                 })
             }else if (response.status === 401){
                 history.push(RESTRICTED_PAGE);
+            }else if (response.redirected){
+                console.log(response.url);
+                window.location.href = response.url;
             }
         })
             .catch(error => {
@@ -69,11 +81,15 @@ export function DBSearch(name, surname, p_number){
 export function callSubmit(){
     console.log("callSubmit method called");
     return (dispatch)=>{
-        fetch(apiUrl+'officer/active_call', {
+        fetch('http://www.nypolicecw.com:7313/officer/active_call', {
             method: 'POST',
-            redirect: "follow",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             credentials: 'include'
         }).then(response=>{
+            console.log(response);
             if(response.ok){
                 dispatch({
                     type: CALL_SUBMITTED,
@@ -81,6 +97,9 @@ export function callSubmit(){
                 })
             }else if (response.status === 401){
                 history.push(RESTRICTED_PAGE);
+            }else if (response.redirected){
+                console.log(response.url);
+                window.location.href = response.url;
             }
         })
             .catch(error => {
@@ -96,18 +115,26 @@ export function callSubmit(){
 export function loadCalls(){
     console.log("loadCalls method called");
     return (dispatch)=>{
-        fetch(apiUrl+'officer/call_history', {
+        fetch('http://www.nypolicecw.com:7313/officer/call_history', {
             method: 'GET',
-            redirect: "follow",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             credentials: 'include'
         }).then(response=>{
+            console.dir(response);
             if(response.ok){
+                let payload = response.json();
                 dispatch({
                     type: CALLS_LOADED,
-                    payload: response.text()
+                    payload: payload
                 })
             }else if (response.status === 401){
                 history.push(RESTRICTED_PAGE);
+            }else if (response.redirected){
+                console.log(response.url);
+                window.location.href = response.url;
             }
         }).catch(error => {
             dispatch({

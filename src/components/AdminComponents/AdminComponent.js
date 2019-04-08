@@ -14,7 +14,9 @@ class AdminComponent extends Component{
             passport: '',
             rank: 'officer',
             jabber: '',
-            email: ''
+            email: '',
+            shift: '',
+            p_id: ''
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -26,9 +28,9 @@ class AdminComponent extends Component{
         console.log(this.state);
     };
 
-    createUser = (passport, rank, jabber, email) => event => {
+    createUser = (passport, rank, jabber, email, shift, p_id) => event => {
         event.preventDefault();
-        this.props.createUser(passport, rank, jabber, email);
+        this.props.createUser(passport, rank, jabber, email, shift, p_id);
     };
 
     render() {
@@ -61,6 +63,22 @@ class AdminComponent extends Component{
                     </Form.Row>
                     <Form.Row>
                         <Col/>
+                        <Form.Group as={Col}>
+                            <Form.Label>Shift</Form.Label>
+                            <Form.Control type="text" placeholder="Enter shift" onChange={this.handleChange('shift')}/>
+                        </Form.Group>
+                        <Col/>
+                    </Form.Row>
+                    <Form.Row>
+                        <Col/>
+                        <Form.Group as={Col}>
+                            <Form.Label>Policeman ID</Form.Label>
+                            <Form.Control type="text" placeholder="Enter policeman ID" onChange={this.handleChange('p_id')}/>
+                        </Form.Group>
+                        <Col/>
+                    </Form.Row>
+                    <Form.Row>
+                        <Col/>
                             <Form.Group as={Col}>
                                 <Form.Label>Rank</Form.Label>
                                 <Form.Control as="select" onChange={this.handleChange('rank')}>
@@ -78,8 +96,8 @@ class AdminComponent extends Component{
                     <Form.Row>
                         <Col/>
                         <Col>
-                            <Button outline color="primary" type="submit" onClick={this.createUser(this.state.passport, this.state.jabber, this.state.email, this.state.rank)}>
-                                Submit
+                            <Button outline color="primary" type="submit" onClick={this.createUser(this.state.passport, this.state.jabber, this.state.email, this.state.rank, this.state.shift, this.state.p_id)}>
+                                Create
                             </Button>
                         </Col>
                         <Col/>

@@ -43,10 +43,6 @@ export default class DispatcherCallHeader extends Component{
                         </Nav>
                         <Nav className="ml-auto">
                             <NavItem>
-                                <NotificationComponent/>
-                                &nbsp;
-                            </NavItem>
-                            <NavItem>
                                 <SignOutComponent/>
                             </NavItem>
                         </Nav>

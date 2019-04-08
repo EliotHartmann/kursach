@@ -31,10 +31,6 @@ export default class AdminHeader extends Component{
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NotificationComponent/>
-                                &nbsp;
-                            </NavItem>
-                            <NavItem>
                                 <SignOutComponent/>
                             </NavItem>
                         </Nav>

@@ -1,5 +1,5 @@
 import {
- MESSAGE_DELETED,
+ MESSAGE_DELETED, NEW_MESSAGE,
  WARNING,
 } from "../../constants/actionTypes";
 import {initialState} from "../states";
@@ -18,6 +18,22 @@ export default function mainReducer(state = initialState, action) {
    }
    console.log(newMessages);
    return {...state, messages: newMessages}
+  }
+  case NEW_MESSAGE: {
+   if(action.payload==='No info' || action.payload==='{"headers":{},"body":null,"statusCode":"NOT_FOUND","statusCodeValue":404}' || action.payload==='') {
+    return state
+   }else {
+    let newMessages = [];
+    if(state.messages.length !== 0){
+     newMessages.push(state.messages);
+    }
+    newMessages.push({
+     id: state.messages.length-1,
+     data: action.payload
+    });
+    return {...state, messages: newMessages}
+   }
+
   }
   default:
    return state;

@@ -18,12 +18,10 @@ export default function policemanReducer(state = initialState, action){
                 salary: loadedInfo.salary,
                 premium: loadedInfo.premium,
                 rank: loadedInfo.rank,
-                status: loadedInfo.status,
                 p_station: loadedInfo.policeStation.id,
                 name: loadedInfo.person.name,
                 surname: loadedInfo.person.surname,
-                jabber: loadedInfo.jabber,
-                email: loadedInfo.user.mail,
+                email: loadedInfo.mail,
                 historyOfWork: loadedInfo.workExperiences
             };
             console.log(info);
@@ -38,7 +36,7 @@ export default function policemanReducer(state = initialState, action){
                 calls.push({
                     description: call.description,
                     time: call.time,
-                    status: call.status === "ACTIVE",
+                    status: call.status,
                     callLocation:{
                         street: call.callLocation.street,
                         houseNumber: call.callLocation.houseNumber
@@ -58,9 +56,10 @@ export default function policemanReducer(state = initialState, action){
             for(let i=0; i<loadedHumans.length; i++){
                 let human = loadedHumans[i];
                 humans.push({
-                    name: human.name + human.surname,
+                    name: human.name,
+                    surname: human.surname,
                     p_number: human.passportNumber,
-                    location: human.registrationLocation.street + human.registrationLocation.houseNumber + human.registrationLocation.district.name
+                    location: human.registrationLocation.street + " " + human.registrationLocation.houseNumber
                 })
             }
             console.log(humans);

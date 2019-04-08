@@ -13,7 +13,6 @@ class AdminComponent extends Component{
         this.state = {
             passport: '',
             rank: 'officer',
-            jabber: '',
             email: '',
             shift: '',
             p_id: ''
@@ -28,9 +27,9 @@ class AdminComponent extends Component{
         console.log(this.state);
     };
 
-    createUser = (passport, rank, jabber, email, shift, p_id) => event => {
+    createUser = (passport, rank, email, shift) => event => {
         event.preventDefault();
-        this.props.createUser(passport, rank, jabber, email, shift, p_id);
+        this.props.createUser(passport, rank, email, shift);
     };
 
     render() {
@@ -48,14 +47,6 @@ class AdminComponent extends Component{
                     <Form.Row>
                         <Col/>
                             <Form.Group as={Col}>
-                                <Form.Label>Jabber</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Jabber" onChange={this.handleChange('jabber')}/>
-                            </Form.Group>
-                        <Col/>
-                    </Form.Row>
-                    <Form.Row>
-                        <Col/>
-                            <Form.Group as={Col}>
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control type="email" placeholder="Enter email" onChange={this.handleChange('email')}/>
                             </Form.Group>
@@ -64,16 +55,19 @@ class AdminComponent extends Component{
                     <Form.Row>
                         <Col/>
                         <Form.Group as={Col}>
-                            <Form.Label>Shift</Form.Label>
-                            <Form.Control type="text" placeholder="Enter shift" onChange={this.handleChange('shift')}/>
+                            <Form.Control as="select" onChange={this.handleChange('shift')}>
+                                <Form.Label>Shift</Form.Label>
+                                <option>DAY</option>
+                                <option>NIGHT</option>
+                            </Form.Control>
                         </Form.Group>
                         <Col/>
                     </Form.Row>
                     <Form.Row>
                         <Col/>
                         <Form.Group as={Col}>
-                            <Form.Label>Policeman ID</Form.Label>
-                            <Form.Control type="text" placeholder="Enter policeman ID" onChange={this.handleChange('p_id')}/>
+                            <Form.Label>Station id</Form.Label>
+                            <Form.Control type="text" placeholder="Enter station id" onChange={this.handleChange('p_id')}/>
                         </Form.Group>
                         <Col/>
                     </Form.Row>
@@ -82,13 +76,13 @@ class AdminComponent extends Component{
                             <Form.Group as={Col}>
                                 <Form.Label>Rank</Form.Label>
                                 <Form.Control as="select" onChange={this.handleChange('rank')}>
-                                    <option>Officer</option>
-                                    <option>Detective</option>
-                                    <option>Corporal</option>
-                                    <option>Sergeant</option>
-                                    <option>Lieutenant</option>
-                                    <option>Captain</option>
-                                    <option>Dispatcher</option>
+                                    <option>OFFICER</option>
+                                    <option>DETECTIVE</option>
+                                    <option>CORPORAL</option>
+                                    <option>SERGEANT</option>
+                                    <option>LIEUTENANT</option>
+                                    <option>CAPTAIN</option>
+                                    <option>DISPATCHER</option>
                                 </Form.Control>
                             </Form.Group>
                         <Col/>
@@ -96,7 +90,7 @@ class AdminComponent extends Component{
                     <Form.Row>
                         <Col/>
                         <Col>
-                            <Button outline color="primary" type="submit" onClick={this.createUser(this.state.passport, this.state.jabber, this.state.email, this.state.rank, this.state.shift, this.state.p_id)}>
+                            <Button outline color="primary" type="submit" onClick={this.createUser(this.state.passport, this.state.rank, this.state.email, this.state.shift, this.state.p_id)}>
                                 Create
                             </Button>
                         </Col>

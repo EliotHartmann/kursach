@@ -4,7 +4,7 @@ import {
     WARNING
 } from "../../constants/actionTypes";
 import history from '../history';
-import { RESTRICTED_PAGE} from "../../constants/paths";
+import {MAIN_PAGE, RESTRICTED_PAGE} from "../../constants/paths";
 import {apiUrl} from "../../index";
 
 
@@ -20,7 +20,7 @@ export function makeWarning(message) {
 export function login() {
     console.log("login method called");
     return (dispatch) => {
-        fetch(apiUrl+'login', {
+        fetch('http://www.nypolicecw.com:7313/login', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -29,11 +29,11 @@ export function login() {
             credentials: 'include'
         }).then(response=>{
             console.log(response);
-            if(response.redirected){
+            if (response.status === 401){
+                history.push(RESTRICTED_PAGE);
+            }else if(response.redirected){
                 console.log(response.url);
                 window.location.href = response.url;
-            }else if (response.status === 401){
-                history.push(RESTRICTED_PAGE);
             }
         })
             .catch(error => {
@@ -57,14 +57,13 @@ export function logout() {
             credentials: 'include'
         }).then(response=>{
             console.log(response);
-            if(response.redirected){
-                console.log(response.url);
-                window.location.href = response.url;
+            if (response.status === 403){
+                history.push(RESTRICTED_PAGE);
+            }else if(response.redirected){
+                history.push(MAIN_PAGE);
                 dispatch({
                     type: LOGOUT,
                 })
-            }else if (response.status === 401){
-                history.push(RESTRICTED_PAGE);
             }
         })
             .catch(error => {
@@ -94,18 +93,18 @@ export function register(login, password) {
             credentials: 'include'
         }).then(response=>{
             console.log(response);
-            if(response.ok){
-                dispatch({
-                    type: REGISTRATION_COMPLETED,
-                    payload: "Registration completed.",
-                    login: login
-                })
-            }else if (response.status === 401){
+            if (response.status === 403){
                 history.push(RESTRICTED_PAGE);
             }
             else if (response.redirected){
                 console.log(response.url);
                 window.location.href = response.url;
+            }else if(response.ok){
+                dispatch({
+                    type: REGISTRATION_COMPLETED,
+                    payload: "Registration completed.",
+                    login: login
+                })
             }
         })
             .catch(error => {

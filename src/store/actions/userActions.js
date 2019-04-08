@@ -16,17 +16,19 @@ export function loadStats(){
             credentials: 'include'
         }).then(response=>{
             console.log(response);
-            if(response.ok){
-                let payload = response.json();
-                dispatch({
-                    type: STATS_LOADED,
-                    payload: payload
-                })
-            }else if (response.status === 401){
+            if (response.status === 403){
                 history.push(RESTRICTED_PAGE);
             }else if (response.redirected){
                 console.log(response.url);
                 window.location.href = response.url;
+            }else if(response.ok){
+                response.json().then( data => {
+                    dispatch({
+                        type: STATS_LOADED,
+                        payload: data
+                    })
+                })
+
             }
         })
             .catch(error => {

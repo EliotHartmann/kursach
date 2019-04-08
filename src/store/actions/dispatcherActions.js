@@ -26,16 +26,16 @@ export function newCall(street, house, description, type){
             credentials: 'include'
         }).then(response =>{
             console.log(response);
-                if(response.ok){
+            if (response.status === 403){
+                history.push(RESTRICTED_PAGE);
+            }else if (response.redirected){
+                console.log(response.url);
+                window.location.href = response.url;
+            }else if(response.ok){
                     dispatch({
                         type: CALL_CREATED,
                         payload: "Call successfully created."
                     });
-                } else if (response.status === 401){
-                    history.push(RESTRICTED_PAGE);
-                } else if (response.redirected){
-                    console.log(response.url);
-                    window.location.href = response.url;
                 }
         })
             .catch(error => {

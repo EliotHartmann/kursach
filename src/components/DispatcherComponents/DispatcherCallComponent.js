@@ -13,9 +13,8 @@ class DispatcherCallComponent extends Component{
         this.state = {
             street: '',
             house: '',
-            district: '',
             description: '',
-            type: 'Antisocial behavior'
+            type: 'ANTISOCIAL_BEHAVIOR'
 
         };
         this.handleChange = this.handleChange.bind(this);
@@ -27,9 +26,9 @@ class DispatcherCallComponent extends Component{
         });
         console.log(this.state);
     };
-    newCall = (street, house, district, description, type) => event => {
+    newCall = (street, house, description, type) => event => {
         event.preventDefault();
-        this.props.newCall(street, house, district, description, type);
+        this.props.newCall(street, house, description, type);
     };
     render() {
         return (
@@ -61,25 +60,25 @@ class DispatcherCallComponent extends Component{
                         <Form.Group as={Col}>
                         <Form.Label>Type</Form.Label>
                             <Form.Control as="select" onChange={this.handleChange('type')}>
-                                <option>Antisocial behavior</option>
-                                <option>Arson</option>
-                                <option>Burgary</option>
-                                <option>Childhood abuse</option>
-                                <option>Domestic abuse</option>
-                                <option>Fraud</option>
-                                <option>Hate crime</option>
-                                <option>Murder</option>
-                                <option>Rape</option>
-                                <option>Robbery</option>
-                                <option>Terrorism</option>
-                                <option>Violent crime</option>
+                                <option>ANTISOCIAL_BEHAVIOR</option>
+                                <option>ARSON</option>
+                                <option>BURGARY</option>
+                                <option>CHILDHOOD_ABUSE</option>
+                                <option>DOMESTIC_ABUSE</option>
+                                <option>FRAUD</option>
+                                <option>HATE_CRIME</option>
+                                <option>MURDER</option>
+                                <option>RAPE</option>
+                                <option>ROBBERY</option>
+                                <option>TERRORISM</option>
+                                <option>VIOLENT_CRIME</option>
                             </Form.Control>
                         </Form.Group>
                         <Col md={1}/>
                     </Form.Row>
                     <Form.Row>
                         <Col md={1}/>
-                        <Button variant="outline-primary" onClick={this.newCall(this.state.street, this.state.house, this.state.district, this.state.description, this.state.type)}>
+                        <Button variant="outline-primary" onClick={this.newCall(this.state.street, this.state.house, this.state.description, this.state.type)}>
                             Create call
                         </Button>
                     </Form.Row>

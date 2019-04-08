@@ -19,3 +19,4 @@ export const USER_INFO_LOADED = "USER_INFO_LOADED";
 
 
 export const MESSAGE_DELETED = 'MESSAGE_DELETED';
+export const NEW_MESSAGE = 'NEW_MESSAGE';

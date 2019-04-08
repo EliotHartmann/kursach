@@ -24,8 +24,11 @@ export default function authReducer(state = initialState, action){
                     p_station: '',
                     name: '',
                     surname: '',
-                    jabber: '',
                     email: '',
+                    officerStatus: '',
+                    shift: '',
+                    id: '',
+                    premium: '',
                     status: '',
                     historyOfWork: []
                 },
@@ -35,7 +38,18 @@ export default function authReducer(state = initialState, action){
                     login: '',
                     password: ''
                 },
-                stats: []};
+                stats: [],
+                userInfo: {
+                    username: '',
+                    email: ''
+                },
+                messages:[{
+                    data: "message 1",
+                    id: 0
+                }, {
+                    data: "message 2",
+                    id: 1
+                }]};
         case LOGIN_SACCEED:
             return {...state, message: action.payload};
         case REGISTRATION_COMPLETED:

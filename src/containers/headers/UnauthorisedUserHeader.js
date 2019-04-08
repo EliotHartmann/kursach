@@ -1,4 +1,4 @@
-import {Navbar, NavbarBrand, NavLink, NavItem, NavbarToggler, Collapse, Nav} from "reactstrap";
+import {Navbar, NavbarBrand, NavLink, NavItem, NavbarToggler, Collapse, Nav, Button} from "reactstrap";
 import {MAIN_PAGE, REGISTER_PAGE} from "../../constants/paths";
 import React, {Component} from "react";
 import {login} from "../../store/actions/authActions";
@@ -20,8 +20,7 @@ class UnauthorisedUserHeader extends Component{
             isOpen: !this.state.isOpen
         });
     }
-    login = () => event => {
-        event.preventDefault();
+    login = () => {
         this.props.login();
     };
 
@@ -38,14 +37,14 @@ class UnauthorisedUserHeader extends Component{
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <NavLink onClick={this.login()}>
+                            <Button size={"sm"} color="success" onClick={ ()=>{this.login()}}>
                                 Login
-                            </NavLink>
+                            </Button>
                         </NavItem>
                         <NavItem>
-                            <NavLink href={REGISTER_PAGE}>
+                            <Button size={"sm"} color="primary" href={REGISTER_PAGE}>
                                 Sign up
-                            </NavLink>
+                            </Button>
                         </NavItem>
                     </Nav>
                 </Collapse>

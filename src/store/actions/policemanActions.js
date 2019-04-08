@@ -20,17 +20,18 @@ export function loadInfo(){
             credentials: 'include'
         }).then(response=>{
             console.log(response);
-            if(response.ok){
-                let payload = response.json();
-                dispatch({
-                    type: INFO_LOADED,
-                    payload: payload
-                })
-            }else if (response.status === 401){
+            if (response.status === 401){
                 history.push(RESTRICTED_PAGE);
             }else if (response.redirected){
                 console.log(response.url);
                 window.location.href = response.url;
+            }
+            else if(response.ok){
+                response.json().then(data => {
+                dispatch({
+                    type: INFO_LOADED,
+                    payload: data
+                })})
             }
         })
             .catch(error => {
@@ -42,7 +43,7 @@ export function loadInfo(){
     }
 }
 
-export function DBSearch(name, surname, p_number){
+export function DBSearch(surname, name, p_number){
     console.log("DBSearch method called");
     return (dispatch)=>{
         fetch('http://www.nypolicecw.com:7313/officer/search?passport='+p_number+"&surname="+surname+"&name="+name,  {
@@ -55,18 +56,21 @@ export function DBSearch(name, surname, p_number){
             // body: data
         }).then(response=>{
             console.log(response);
-            if(response.ok){
-                console.log(response);
-                let payload = response.json();
-                dispatch({
-                    type: SEARCH_COMPLETED,
-                    payload: payload
-                })
-            }else if (response.status === 401){
+            if (response.status === 403){
                 history.push(RESTRICTED_PAGE);
             }else if (response.redirected){
                 console.log(response.url);
                 window.location.href = response.url;
+            }else if(response.ok){
+                console.log(response);
+                response.json().then(data => {
+                    dispatch({
+                        type: SEARCH_COMPLETED,
+                        payload: data
+                    })
+                    }
+                )
+
             }
         })
             .catch(error => {
@@ -90,16 +94,17 @@ export function callSubmit(){
             credentials: 'include'
         }).then(response=>{
             console.log(response);
+            if (response.status === 403){
+                history.push(RESTRICTED_PAGE);
+            }else if (response.redirected){
+                console.log(response.url);
+                window.location.href = response.url;
+            }
             if(response.ok){
                 dispatch({
                     type: CALL_SUBMITTED,
                     payload: "Call successfully finished"
                 })
-            }else if (response.status === 401){
-                history.push(RESTRICTED_PAGE);
-            }else if (response.redirected){
-                console.log(response.url);
-                window.location.href = response.url;
             }
         })
             .catch(error => {
@@ -124,17 +129,19 @@ export function loadCalls(){
             credentials: 'include'
         }).then(response=>{
             console.dir(response);
-            if(response.ok){
-                let payload = response.json();
-                dispatch({
-                    type: CALLS_LOADED,
-                    payload: payload
-                })
-            }else if (response.status === 401){
+            if (response.status === 403){
                 history.push(RESTRICTED_PAGE);
             }else if (response.redirected){
                 console.log(response.url);
                 window.location.href = response.url;
+            }else if(response.ok){
+                response.json().then( data => {
+                    dispatch({
+                        type: CALLS_LOADED,
+                        payload: data
+                    })
+                })
+
             }
         }).catch(error => {
             dispatch({

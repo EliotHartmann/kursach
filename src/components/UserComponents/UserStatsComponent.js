@@ -17,6 +17,11 @@ class UserStatsComponent extends Component{
         this.handleChange = this.handleChange.bind(this);
         // this.renderDistrictStats = this.renderDistrictStats().bind(this);
     }
+
+    componentDidMount() {
+        this.props.loadStats();
+    }
+
     handleChange = name => event => {
         event.preventDefault();
         this.setState({
@@ -82,7 +87,7 @@ class UserStatsComponent extends Component{
                         <Col md={1}/>
                     </Row>
                 </Table>
-                тут должна быть конечно как бы интерактивная карта но ее нет
+
                 <Footer/>
             </div>
 

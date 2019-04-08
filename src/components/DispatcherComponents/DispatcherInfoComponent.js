@@ -5,13 +5,15 @@ import {connect} from "react-redux";
 import {loadInfo} from "../../store/actions/policemanActions";
 import WarningComponent from "../WarningComponent";
 import Footer from "../../containers/Footer";
-import PolicemanInfoHeader from "../../containers/headers/PolicemanHeaders/PolicemanInfoHeader";
 import DispatcherInfoHeader from "../../containers/headers/DispatcherHeaders/DispatcherInfoHeader";
 
 class DispatcherInfoComponent extends Component{
     constructor(props){
         super(props);
         // this.loadInfo = this.loadInfo().bind(this);
+    }
+    componentDidMount() {
+        this.props.loadInfo();
     }
 
     createHistory = () =>{
@@ -29,10 +31,11 @@ class DispatcherInfoComponent extends Component{
         return result;
     };
 
-    loadInfo = () => {
-        this.props.loadInfo();
+    render() {
+
         return(
             <div>
+                <DispatcherInfoHeader/>
                 <Table>
                     <Row>
                         <Col md={1}/>
@@ -69,14 +72,6 @@ class DispatcherInfoComponent extends Component{
                                     <th className={"text-secondary"}>{this.props.info.surname}</th>
                                 </tr>
                                 <tr>
-                                    <th className={"text-danger"}>Status</th>
-                                    <th className={"text-secondary"}>{this.props.info.status}</th>
-                                </tr>
-                                <tr>
-                                    <th className={"text-danger"}>Jabber</th>
-                                    <th className={"text-secondary"}>{this.props.info.jabber}</th>
-                                </tr>
-                                <tr>
                                     <th className={"text-danger"}>Email</th>
                                     <th className={"text-secondary"}>{this.props.info.email}</th>
                                 </tr>
@@ -111,17 +106,6 @@ class DispatcherInfoComponent extends Component{
                         <Col md={1}/>
                     </Row>
                 </Table>
-            </div>
-        )
-    };
-
-
-    render() {
-
-        return(
-            <div>
-                <DispatcherInfoHeader/>
-                {this.loadInfo()}
                 <WarningComponent/>
                 <Footer/>
             </div>

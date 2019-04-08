@@ -9,7 +9,7 @@ import {
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {Image} from "react-bootstrap";
-import {deleteMessage} from "../store/actions/anotherActions";
+import {deleteMessage, startNotifications} from "../store/actions/anotherActions";
 
 class NotificationComponent extends Component{
 
@@ -22,6 +22,10 @@ class NotificationComponent extends Component{
         this.state = {
             dropdownOpen: false
         };
+    }
+
+    componentDidMount() {
+        this.props.startNotifications();
     }
 
     toggle() {
@@ -76,7 +80,8 @@ const mapStateToProps = (state) =>{
 };
 const mapDispatchToProps = (dispatch) => {
     return{
-        deleteMessage: bindActionCreators(deleteMessage, dispatch)
+        deleteMessage: bindActionCreators(deleteMessage, dispatch),
+        startNotifications: bindActionCreators(startNotifications, dispatch)
     };
 };
 

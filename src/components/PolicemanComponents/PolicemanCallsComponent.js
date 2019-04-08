@@ -14,9 +14,9 @@ class PolicemanCallsComponent extends Component{
         this.callTableRender = this.callTableRender.bind(this);
     }
 
-    loadCalls = () =>{
+    componentDidMount() {
         this.props.loadCalls();
-    };
+    }
 
     callTableRender() {
         let table = [];
@@ -24,6 +24,11 @@ class PolicemanCallsComponent extends Component{
         for(let i = 0; i<this.props.calls.length; i++) {
 
             let call = this.props.calls[i];
+
+            let status = false;
+
+            if(call.status === "ACTIVE")
+                status = true;
             table.push(
                 <tr>
                     <td>{call.description}</td>
@@ -31,8 +36,8 @@ class PolicemanCallsComponent extends Component{
                     <td><Button
                         color={"outline-success"}
                         size={"sm"}
-                        disabled={call.status}
-                        onClick={ ()=>{this.props.callSubmit(call.description, call.time, call.status)}}>
+                        disabled={status}
+                        onClick={ ()=>{this.props.callSubmit()}}>
                         Finish call
                     </Button></td>
                 </tr>
@@ -47,7 +52,6 @@ class PolicemanCallsComponent extends Component{
         return(
             <div>
                 <PolicemanCallsHeader/>
-                {this.loadCalls()}
                 <Table>
                     <Row>
                         <Col md={1}/>

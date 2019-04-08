@@ -35,10 +35,6 @@ export default class UserHeader extends Component{
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto">
                             <NavItem>
-                                <NotificationComponent/>
-                                &nbsp;
-                            </NavItem>
-                            <NavItem>
                                 <SignOutComponent/>
                             </NavItem>
                         </Nav>

@@ -31,8 +31,8 @@ class PolicemanWorkWithDBComponent extends Component{
         console.log(this.state);
     };
 
-    DBSearch = (name, surname, p_number) => event => {
-        this.props.DBSearch(name, surname, p_number);
+    DBSearch = (surname, name, p_number) => event => {
+        this.props.DBSearch(surname, name, p_number);
     };
 
     renderResultTable(){
